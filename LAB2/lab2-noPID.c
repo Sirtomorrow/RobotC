@@ -28,10 +28,19 @@ void turn90degreesLeft(long time, long motorpower)
 
     setMotorSpeed(leftMotor, -motorpower);  //Set the leftMotor (motor1) to half power (50)
     setMotorSpeed(rightMotor, motorpower);  //Set the rightMotor (motor6) to half power (50)
-    sleep(time);  //Wait for 2 seconds before continuing on in the program.
+    sleep(time);  //Wait for 0.5 seconds before continuing on in the program.
 }
+
+void turn90degreesRight(long time, long motorpower)
+{
+
+    setMotorSpeed(leftMotor, motorpower);  //Set the leftMotor (motor1) to half power (50)
+    setMotorSpeed(rightMotor, -motorpower);  //Set the rightMotor (motor6) to half power (50)
+    sleep(time);  //Wait for 0.5 seconds before continuing on in the program.
+}
+
 task main()
 {
-    turn90degreesLeft(500,50);
+    turn90degreesRight(500,50);
 
 }
