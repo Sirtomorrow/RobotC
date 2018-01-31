@@ -39,8 +39,35 @@ void turn90degreesRight(long time, long motorpower)
     sleep(time);  //Wait for 0.5 seconds before continuing on in the program.
 }
 
+void goForward1second(long time, long motorpower)
+{
+
+   setMotorSpeed(leftMotor, motorpower);  //Set the leftMotor (motor1) to half power (50)
+   setMotorSpeed(rightMotor, motorpower);  //Set the rightMotor (motor6) to half power (50)
+   sleep(time);  //Wait for 1 seconds before continuing on in the program.
+}
+
+void swingRight90degrees()
+{
+	// Move forward at half power for 1.5 seconds
+	setMotorSpeed(leftMotor, 50);	//Set the leftMotor (motor1) to half power forward (50)
+	setMotorSpeed(rightMotor, 50); 	//Set the rightMotor (motor6) to half power forward (50)
+	sleep(500);			//Wait for 1.5 seconds before continuing on in the program.
+
+	// Swing right at half power for 1.5 seconds
+	setMotorSpeed(leftMotor, 80);	//Set the leftMotor (motor1) to half power forward (50)
+	setMotorSpeed(rightMotor, 25); 	//Set the rightMotor (motor6) to half power forward (50)
+	sleep(1000);			//Wait for 1.5 seconds before continuing on in the program.
+
+	// Move forward at half power for 1.5 seconds
+	setMotorSpeed(leftMotor, 50);	//Set the leftMotor (motor1) to half power forward (50)
+	setMotorSpeed(rightMotor, 50); 	//Set the rightMotor (motor6) to half power forward (50)
+	sleep(500);			//Wait for 1.5 seconds before continuing on in the program.
+}
+
 task main()
 {
-    turn90degreesRight(500,50);
+
+   swingRight90degrees();
 
 }
