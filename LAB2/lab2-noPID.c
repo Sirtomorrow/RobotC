@@ -47,27 +47,38 @@ void goForward1second(long time, long motorpower)
    sleep(time);  //Wait for 1 seconds before continuing on in the program.
 }
 
-void swingRight90degrees()
+void swingRight90degrees(long time, long motorpower)
 {
 	// Move forward at half power for 1.5 seconds
-	setMotorSpeed(leftMotor, 50);	//Set the leftMotor (motor1) to half power forward (50)
-	setMotorSpeed(rightMotor, 50); 	//Set the rightMotor (motor6) to half power forward (50)
-	sleep(500);			//Wait for 1.5 seconds before continuing on in the program.
+    setMotorSpeed(leftMotor, motorpower);  //Set the leftMotor (motor1) to half power (50)
+    setMotorSpeed(rightMotor, 0);  //Set the rightMotor (motor6) to half power (50)
+    sleep(time);  //Wait for 2 seconds before continuing on in the program.
+}
 
-	// Swing right at half power for 1.5 seconds
-	setMotorSpeed(leftMotor, 80);	//Set the leftMotor (motor1) to half power forward (50)
-	setMotorSpeed(rightMotor, 25); 	//Set the rightMotor (motor6) to half power forward (50)
-	sleep(1000);			//Wait for 1.5 seconds before continuing on in the program.
+void swingLeft90degrees(long time, long motorpower)
+{
+	  //Swing left
+    setMotorSpeed(leftMotor, 0);  //Set the leftMotor (motor1) to half power (50)
+    setMotorSpeed(rightMotor, motorpower );  //Set the rightMotor (motor6) to half power (50)
+    sleep(time);  //Wait for 2 seconds before continuing on in the program.
+}
 
-	// Move forward at half power for 1.5 seconds
-	setMotorSpeed(leftMotor, 50);	//Set the leftMotor (motor1) to half power forward (50)
-	setMotorSpeed(rightMotor, 50); 	//Set the rightMotor (motor6) to half power forward (50)
-	sleep(500);			//Wait for 1.5 seconds before continuing on in the program.
+void reverse1second(long time, long motorpower)
+{
+
+   setMotorSpeed(leftMotor, -motorpower);  //Set the leftMotor (motor1) to half power (50)
+   setMotorSpeed(rightMotor, -motorpower);  //Set the rightMotor (motor6) to half power (50)
+   sleep(time);  //Wait for 1 seconds before continuing on in the program.
 }
 
 task main()
 {
 
-   swingRight90degrees();
+   turn90degreesLeft(500,50);
+   turn90degreesRight(500,50);
+   goForward1second(1000,50);
+   swingRight90degrees(1000,50);
+   swingLeft90degrees(1000,50);
+   reverse1second(1000,50);
 
 }
