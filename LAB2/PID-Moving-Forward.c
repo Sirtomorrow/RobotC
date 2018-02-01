@@ -12,14 +12,14 @@
     MotorB       				rightMotor          LEGO EV3 Motor		      Right side motor (reversed)
 ------------------------------------------------------------------------------------------------*/
 //
-// Test program as part of LAB2
+// Moving forward program
 //
 void turnLeft(long time, long motorpower)
 {
 
     setMotorSpeed(leftMotor, -motorpower);  //Set the leftMotor (motor1) to half power (50)
     setMotorSpeed(rightMotor, motorpower);  //Set the rightMotor (motor6) to half power (50)
-    sleep(time);  //Wait for 2 seconds before continuing on in the program.
+    sleep(time);  //Wait for 1 secondsbefore continuing on in the program.
 }
 task main()
 {
