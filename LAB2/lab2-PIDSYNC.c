@@ -18,7 +18,7 @@
     MotorB       				rightMotor          LEGO EV3 Motor		      Right side motor (reversed)
 ------------------------------------------------------------------------------------------------*/
 //
-// Test program as part of LAB2
+// Using the setMotorSyncTime command in the function moveRobot
 //
 
 
@@ -41,13 +41,16 @@ void moveRobot(tMotor nMotorOne, tMotor nMotorTwo, long nTurnRatio, long nTimeMs
 	setMotorSyncTime( nMotorOne, nMotorTwo, nTurnRatio, nTimeMsec, nSignedPower);
 	sleep(1500);
 
-
+//code not finished, did not have time to finish off question 8
 
 }
 
 task main()
 {
 
-	 moveRobot(leftMotor, rightMotor, 0, 1000, 50);
+	 moveRobot(leftMotor, rightMotor, 0, 1000, 50); 
+	 //turn ratio set to 0
+	 //wait for 1 sec before moving on
+	 //power set to 50 i.e. half power
 
 }
