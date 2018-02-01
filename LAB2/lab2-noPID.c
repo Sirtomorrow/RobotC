@@ -19,11 +19,11 @@
     MotorB       				rightMotor          LEGO EV3 Motor		      Right side motor (reversed)
 ------------------------------------------------------------------------------------------------*/
 //
-// Test program as part of LAB2
+// variety of functions with different functions
 //
 
 
-void turn90degreesLeft(long time, long motorpower)
+void turn90degreesLeft(long time, long motorpower) //function for robot to turn 90 degrees to the left
 {
 
     setMotorSpeed(leftMotor, -motorpower);  //Set the leftMotor (motor1) to half power (50)
@@ -31,7 +31,7 @@ void turn90degreesLeft(long time, long motorpower)
     sleep(time);  //Wait for 0.5 seconds before continuing on in the program.
 }
 
-void turn90degreesRight(long time, long motorpower)
+void turn90degreesRight(long time, long motorpower) //function for robot to turn 90 degrees to the left
 {
 
     setMotorSpeed(leftMotor, motorpower);  //Set the leftMotor (motor1) to half power (50)
@@ -39,7 +39,7 @@ void turn90degreesRight(long time, long motorpower)
     sleep(time);  //Wait for 0.5 seconds before continuing on in the program.
 }
 
-void goForward1second(long time, long motorpower)
+void goForward1second(long time, long motorpower) //function for robot to move forward
 {
 
    setMotorSpeed(leftMotor, motorpower);  //Set the leftMotor (motor1) to half power (50)
@@ -47,23 +47,23 @@ void goForward1second(long time, long motorpower)
    sleep(time);  //Wait for 1 seconds before continuing on in the program.
 }
 
-void swingRight90degrees(long time, long motorpower)
+void swingRight90degrees(long time, long motorpower) //swing the robot 90 degrees to the right
 {
 	// Move forward at half power for 1.5 seconds
     setMotorSpeed(leftMotor, motorpower);  //Set the leftMotor (motor1) to half power (50)
     setMotorSpeed(rightMotor, 0);  //Set the rightMotor (motor6) to half power (50)
-    sleep(time);  //Wait for 2 seconds before continuing on in the program.
+    sleep(time);  //Wait for 1 seconds before continuing on in the program.
 }
 
-void swingLeft90degrees(long time, long motorpower)
+void swingLeft90degrees(long time, long motorpower) //swing the robot 90 degrees to the right
 {
 	  //Swing left
     setMotorSpeed(leftMotor, 0);  //Set the leftMotor (motor1) to half power (50)
     setMotorSpeed(rightMotor, motorpower );  //Set the rightMotor (motor6) to half power (50)
-    sleep(time);  //Wait for 2 seconds before continuing on in the program.
+    sleep(time);  //Wait for 1 seconds before continuing on in the program.
 }
 
-void reverse1second(long time, long motorpower)
+void reverse1second(long time, long motorpower) //make the robot move backwards
 {
 
    setMotorSpeed(leftMotor, -motorpower);  //Set the leftMotor (motor1) to half power (50)
@@ -71,10 +71,10 @@ void reverse1second(long time, long motorpower)
    sleep(time);  //Wait for 1 seconds before continuing on in the program.
 }
 
-task main()
+task main() //execute each of the functions above
 {
 
-   turn90degreesLeft(500,50);
+   turn90degreesLeft(500,50); 
    turn90degreesRight(500,50);
    goForward1second(1000,50);
    swingRight90degrees(1000,50);
