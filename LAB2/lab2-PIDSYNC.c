@@ -30,25 +30,75 @@ void moveRobot(tMotor nMotorOne, tMotor nMotorTwo, long nTurnRatio, long nTimeMs
 	sleep(1500);
 
 		// This makes it go right (all power to left)
-	setMotorSyncTime( nMotorOne, nMotorTwo, -100, 1000, 50);
+	setMotorSyncTime( nMotorOne, nMotorTwo, 35, 1000, 75);
 	sleep(1500);
+
+	// This makes it go straight (both get equal amount of power)
+	setMotorSyncTime( nMotorOne, nMotorTwo, nTurnRatio, nTimeMsec, nSignedPower);
+	sleep(1500);
+
+			// This makes it go right (all power to left)
+	setMotorSyncTime( nMotorOne, nMotorTwo, 35, 1000, 75);
+	sleep(1500);
+
+	// setMotorSyncEncoder(nMotorOne, nMotorTwo, nTurnRatio, nEncoderCount, nSignedPower);
+	// This makes it go straight (both get equal amount of power)
+	setMotorSyncTime( nMotorOne, nMotorTwo, nTurnRatio, nTimeMsec, nSignedPower);
+	sleep(1500);
+
+		// This makes it go right (all power to left)
+	setMotorSyncTime( nMotorOne, nMotorTwo, 35, 1000, 75);
+	sleep(1500);
+
+	// This makes it go straight (both get equal amount of power)
+	setMotorSyncTime( nMotorOne, nMotorTwo, nTurnRatio, nTimeMsec, nSignedPower);
+	sleep(1500);
+
+		// STOP
+	setMotorSyncTime( nMotorOne, nMotorTwo, 0, 0, 0);
+	sleep(3000);
 
 		// This makes it go straight (both get equal amount of power)
 	setMotorSyncTime( nMotorOne, nMotorTwo, nTurnRatio, nTimeMsec, nSignedPower);
 	sleep(1500);
 
-			// This makes it go right (all power to left)
+	//Random direction
+		setMotorSyncTime( nMotorOne, nMotorTwo, -50 + random(50), 1000, 75);
+	sleep(1500);
+
+			// STOP
+	setMotorSyncTime( nMotorOne, nMotorTwo, 0, 0, 0);
+	sleep(3000);
+
+}
+
+
+void fullspeedspin (tMotor nMotorOne, tMotor nMotorTwo, long nTurnRatio, long nTimeMsec, long nSignedPower)
+{
+//Forward180Back
+
+		// This makes it go straight (both get equal amount of power)
 	setMotorSyncTime( nMotorOne, nMotorTwo, nTurnRatio, nTimeMsec, nSignedPower);
 	sleep(1500);
 
-//code not finished, did not have time to finish off question 8
+			// This makes it go 180
+	setMotorSyncTime( nMotorOne, nMotorTwo, nTurnRatio, nTimeMsec, nSignedPower);
+	sleep(1500);
+
+			// This makes it go straight (both get equal amount of power)
+	setMotorSyncTime( nMotorOne, nMotorTwo, nTurnRatio, nTimeMsec, nSignedPower);
+	sleep(1500);
 
 }
 
 task main()
 {
+		moveRobot(leftMotor, rightMotor, 0, 1000, 75);
+	 //turn ratio set to 0
+	 //wait for 1 sec before moving on
+	 //power set to 50 i.e. half power
 
-	 moveRobot(leftMotor, rightMotor, 0, 1000, 50); 
+		 fullspeedspin(leftMotor, rightMotor, 0, 5000, 100);
 	 //turn ratio set to 0
 	 //wait for 1 sec before moving on
 	 //power set to 50 i.e. half power
