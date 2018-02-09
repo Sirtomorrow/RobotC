@@ -1,0 +1,25 @@
+Part A - LAB3
+
+1.
+(a) False
+(b) True
+(c) True
+(d) False
+(e) True
+(f) True
+(g) False
+(h) False
+(i) False
+(j) False
+
+2.
+1 - Line 3 has an extra "{" 
+2 - Line 15 is missing an extra "/", therefore the comment is rendered useless
+3 - Line 7 has a "/*", which shouldnt be there
+4 - Line 12 is missing a ";" at the end of it
+5 - Line 8-9, is missing a "sleep" variable
+6 - Line 9, setMotorSyncTime has an extra parameter
+7 - Line 6, 9 and 20, have "left" and "right" which should be "leftMotor" and "rightMotor"
+8 - Line 1 and 2 are missing "encoder" at the end
+9 - Line 1 and 2 are missing "driveLeft" and "driveRight"
+10 - Line 6 has a ";" which shouldnt be there
