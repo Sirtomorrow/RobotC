@@ -17,18 +17,6 @@
     MotorC        			leftMotor           LEGO EV3 Motor		      Left side motor
     MotorB       				rightMotor          LEGO EV3 Motor		      Right side motor (reversed)
 ------------------------------------------------------------------------------------------------*/
-//
-// Using the setMotorSyncTime command in the function moveRobot
-//
-
-//Function to drive forward
-void drive(long nMotorRatio, long dist, long power)
-{
-	setMotorSyncEncoder (leftMotor, rightMotor, nMotorRatio, dist, power);
-	sleep(1000);
-	waitUntilMotorStop (rightMotor);
-	waitUntilMotorStop (leftMotor);
-} //drive(0, 1000, 50);
 
 //Function to turn right
 void turn90(long nMotorRatio, long dist, long power)
@@ -39,16 +27,44 @@ void turn90(long nMotorRatio, long dist, long power)
 	waitUntilMotorStop (leftMotor);
 } //turn90(40, 500, 50);
 
-
+void stop1()
+{
+	setMotorSpeed(leftMotor, 0);
+	setMotorSpeed(rightMotor, 0);
+	sleep(1000);
+	setMotorSpeed(leftMotor, -50);
+	setMotorSpeed(rightMotor, -50);
+	sleep(500);
+	setMotorSyncEncoder(leftMotor, rightMotor, -40, 500, 50);
+	sleep(1000);
+	waitUntilMotorStop (rightMotor);
+	waitUntilMotorStop (leftMotor);
+}
 
 task main()
 {
-		// setBlockBackButton(true);
-	displayCenteredTextLine(1, "Pressed button:");
-	// Loop forever
-	while (true)
+	while(SensorValue[touchSensor]==0)
 	{
+		setMotorSpeed(leftMotor, 50);
+		setMotorSpeed(rightMotor, 50);
 	}
-	return;
+
+	stop1();
+
+		while(SensorValue[sonarSensor]==25)
+	{
+		setMotorSpeed(leftMotor, 50);
+		setMotorSpeed(rightMotor, 50);
+	}
+
+	stop1();
+
+	while(SensorValue[touchSensor]==0)
+	{
+		setMotorSpeed(leftMotor, 50);
+		setMotorSpeed(rightMotor, 50);
+	}
+
+	stop1();
 
 }
