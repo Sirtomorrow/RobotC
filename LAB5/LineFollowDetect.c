@@ -51,12 +51,13 @@ task main()
 
 			while (SensorValue[sonarSensor] < 15)
 			{
-				left (1000);
-				drive (500);
-				right (1000);
-				drive (500);
-				right (1000);
-				drive (500);
+				left (1250);
+				drive (750);
+				right (1250);
+				drive (2000);
+				right (1250);
+				drive (850);
+				left (1250);
 
 			}
 
