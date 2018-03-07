@@ -15,36 +15,40 @@ task main()
 	while (true)
 	{
 	  	// Write the amount of reflected light to the screen between 0 -100
-		displayBigTextLine(4, "Reflected: %d", SensorValue[colorSensor]);
+		displayBigTextLine(2, "Reflected: %d", SensorValue[colorSensor]);
+		displayTextLine(6, "Left = Dark",);
+		displayTextLine(7, "Right = Light",);
+		displayTextLine(8, "Enter = Threshold",);
+		displayTextLine(9, "Up = All values",);
 		// Wait 20 ms to get 50 readings per second
 		sleep(20);
 
-		if (getButtonPress(ENTER_BUTTON)==1)
+		if (getButtonPress(LEFT_BUTTON)==1)
 		{
 			black = SensorValue[colorSensor];
 			displayBigTextLine (2, "%d", black);
 			sleep (500);
 		}
 
-		if (getButtonPress(DOWN_BUTTON)==1)
+		if (getButtonPress(RIGHT_BUTTON)==1)
 		{
 			white = SensorValue[colorSensor];
 			displayBigTextLine (2, "%d", white);
 			sleep(500);
 		}
 
-		if (getButtonPress(UP_BUTTON)==1)
+		if (getButtonPress(ENTER_BUTTON)==1)
 		{
 			threshold = (black + white) / 2;
 			displayBigTextLine (2, "%d", threshold);
 			sleep(500);
 		}
 
-		if (getButtonPress(RIGHT_BUTTON)==1)
+		if (getButtonPress(UP_BUTTON)==1)
 		{
-			displayBigTextLine (6, "Dark:%d\n", black);
-			displayBigTextLine (8, "Light:%d\n", white);
-			displayBigTextLine (10, "Threshold:%d", threshold);
+			displayTextLine (11, "Dark:%d\n", black);
+			displayTextLine (12, "Light:%d\n", white);
+			displayTextLine (13, "Threshold:%d", threshold);
 		}
 
 	}

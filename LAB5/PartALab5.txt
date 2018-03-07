@@ -1,0 +1,23 @@
+1
+(a) True
+(b) False
+(c) True
+(d) True
+(e) True
+(f) False
+(g) True
+(h) True
+(i) True
+(j) True
+
+2
+(i) In line 3, it should be encoder instead of decoder
+(ii) In line, it should be [t1] not [T1]
+(iii) There should be no return 1 on line 33
+(iv) in line 39, there shouldnt be an int 
+(v) line 42, it should be = instead of -
+(vi) line 18 is missing a (
+(vii) line 39, there should be no parameter
+(viii) line 32, missing an }
+(ix) line 29 should be + not -
+(x)
