@@ -8,18 +8,20 @@
 
 void drive(long time)
 {
+		setLEDColor(ledRed);
     setMotorSpeed(leftMotor, 25);  //Set the leftMotor (motor1) to half power (50)
     setMotorSpeed(rightMotor, 25);  //Set the rightMotor (motor6) to half power (50)
     sleep(time);  //Wait for 1 secondsbefore continuing on in the program.
 }
 
-void right_left ()
+void right()
 {
+		setLEDColor(ledOrange);
 		resetGyro(S2);
 
 		repeatUntil(getGyroDegrees(S2) > 90)
 		{
-			//Point turn to the left
+			//Turn to the left
 			setMotorSpeed(motorC, -25);
 			setMotorSpeed(motorB, 25);
 		}
@@ -30,13 +32,11 @@ void right_left ()
 
 }
 
-
 task main()
 {
 	while (true)
 	{
-
-		// Write the amount of reflected light to the screen between 0 -100
+		//Choose the distance of the vehicle
 		displayBigTextLine(2, "Left = 10",);
 		displayBigTextLine(5, "Right = 20",);
 		displayBigTextLine(8, "Down = 30",);
@@ -47,53 +47,49 @@ task main()
 			if (getButtonPress(LEFT_BUTTON)==1)
 			{
 				drive(900);
-				right_left();
+				right();
 				drive(900);
-				right_left();
+				right();
 				drive(900);
-				right_left();
+				right();
 				drive(900);
-				right_left();
-
+				right();
 			}
 
 			if (getButtonPress(RIGHT_BUTTON)==1)
 			{
 				drive(1800);
-				right_left();
+				right();
 				drive(1800);
-				right_left();
+				right();
 				drive(1800);
-				right_left();
+				right();
 				drive(1800);
-				right_left();
-
+				right();
 			}
 
-						if (getButtonPress(DOWN_BUTTON)==1)
+			if (getButtonPress(DOWN_BUTTON)==1)
 			{
 				drive(2700);
-				right_left();
+				right();
 				drive(2700);
-				right_left();
+				right();
 				drive(2700);
-				right_left();
+				right();
 				drive(2700);
-				right_left();
-
+				right();
 			}
 
-						if (getButtonPress(UP_BUTTON)==1)
+			if (getButtonPress(UP_BUTTON)==1)
 			{
 				drive(3600);
-				right_left();
+				right();
 				drive(3600);
-				right_left();
+				right();
 				drive(3600);
-				right_left();
+				right();
 				drive(3600);
-				right_left();
-
+				right();
 			}
 
 	}

@@ -18,18 +18,22 @@ task main()
 	resetGyro(S2);
 
 	while (true)
-	{
-		while(getGyroDegrees(S2) >= 45)
+{
+
+		while(getGyroDegrees(S2) >= 45) //go forward
 		{
+			setLEDColor(ledOrange);
 			drive (25);
 		}
 
-		while(getGyroDegrees(S2) <= -45)
+		while(getGyroDegrees(S2) <= -45) //go backward
 		{
+			setLedColor(ledRed);
 			drive (-25);
 		}
 
 		drive(0);
+		setLedColor(ledGreen);
 
 	}
 

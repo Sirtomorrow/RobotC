@@ -6,29 +6,43 @@
 #pragma config(Motor,  motorB,          leftMotor,     tmotorEV3_Large, PIDControl, driveLeft, encoder)
 #pragma config(Motor,  motorC,          rightMotor,    tmotorEV3_Large, PIDControl, driveRight, encoder)
 
-void drive(long speed)
+void turnright()
 {
-    setMotorSpeed(leftMotor, speed);  //Set the leftMotor (motor1) to half power (50)
-    setMotorSpeed(rightMotor, speed);  //Set the rightMotor (motor6) to half power (50)
+			setMotorSpeed(armMotor, 5);
+}
 
+void turnleft()
+{
+			setMotorSpeed(armMotor, -5);
 }
 
 task main()
 {
-	resetGyro(S2);
+	resetGyro(gyroSensor);
+	int gyrorate = 0;
 
 	while (true)
 	{
-		while(getGyroDegrees(S2) >= 50) //go right
-		{
-			drive (100);
-		}
+			displayBigTextLine(4,"%d", SensorValue(gyroSensor));
+			sleep(1500);
+			gyrorate = SensorValue[gyroSensor];
 
-		while(getGyroDegrees(S2) <= -50) //go left
-		{
-			drive (0);
-		}
+			if(gyrorate > 50)
+			{
+				turnright();
+				setLEDColor(ledOrange);
+				setMotorSpeed (leftMotor, gyrorate * 2);
+				setMotorSpeed (rightMotor, gyrorate * 2);
+			}
 
+
+			if(gyrorate < -50)
+			{
+				turnleft();
+				setLEDColor(ledRed);
+				setMotorSpeed (leftMotor, gyrorate + 50);
+				setMotorSpeed (rightMotor, gyrorate + 50);
+			}
 
 	}
 
