@@ -19,29 +19,25 @@ void turnleft()
 task main()
 {
 	resetGyro(gyroSensor);
-	int gyrorate = 0;
 
 	while (true)
 	{
 			displayBigTextLine(4,"%d", SensorValue(gyroSensor));
 			sleep(1500);
-			gyrorate = SensorValue[gyroSensor];
 
-			if(gyrorate > 50)
+			while(getGyroDegrees(S2) < 50)
 			{
-				turnright();
-				setLEDColor(ledOrange);
-				setMotorSpeed (leftMotor, gyrorate * 2);
-				setMotorSpeed (rightMotor, gyrorate * 2);
+				setMotorSpeed (armMotor, 5);
+				setMotorSpeed (leftMotor, getGyroDegrees(S2)+ 60);
+				setMotorSpeed (rightMotor, getGyroDegrees(S2)+ 60);
 			}
 
 
-			if(gyrorate < -50)
+			while(getGyroDegrees(S2) > -50)
 			{
-				turnleft();
-				setLEDColor(ledRed);
-				setMotorSpeed (leftMotor, gyrorate + 50);
-				setMotorSpeed (rightMotor, gyrorate + 50);
+				setMotorSpeed (armMotor, -5);
+				setMotorSpeed (leftMotor, getGyroDegrees(S2) + 60);
+				setMotorSpeed (rightMotor, getGyroDegrees(S2) + 60);
 			}
 
 	}
