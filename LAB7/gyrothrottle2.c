@@ -36,8 +36,9 @@ task main()
 			while(getGyroDegrees(S2) > -50)
 			{
 				setMotorSpeed (armMotor, -5);
-				setMotorSpeed (leftMotor, getGyroDegrees(S2) + 60);
-				setMotorSpeed (rightMotor, getGyroDegrees(S2) + 60);
+				setMotorSpeed (leftMotor, getGyroDegrees(S2) + 50);
+				setMotorSpeed (rightMotor, getGyroDegrees(S2) + 50);
+
 			}
 
 	}
