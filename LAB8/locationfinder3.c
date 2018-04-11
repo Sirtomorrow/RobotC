@@ -91,7 +91,7 @@ task main()
 	desty = 1;
 
 	//go forward 2 squares
-	for (int i= 0; i<=2; i++)
+	for (int i= 0; i<=(abs(currx-destx)); i++)
 	{
 		setLEDColor (ledGreenFlash);
 		setMotorSyncEncoder (leftMotor, rightMotor, 0, 330,	 30);
@@ -109,7 +109,7 @@ task main()
 	turnright ();
 
 	//goes from y ([1,7] to [1,1])
-	for (int i=0; i<=7; i++)
+	for (int i=0; i<=(abs(curry-desty)); i++)
 	{
 		setLEDColor (ledGreenFlash);
 		setMotorSyncEncoder (leftMotor, rightMotor, 0, 330,	 30);
