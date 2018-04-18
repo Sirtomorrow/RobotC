@@ -115,6 +115,18 @@ void turnleft() //turnright program
 
 } //end turnleft()
 
+void drive (int squares)
+{
+		for (int i=0; i<squares; i++)
+		{
+			setLEDColor (ledGreenFlash);
+			setMotorSyncEncoder (leftMotor, rightMotor, 0, 320,	 10);
+			waitUntilMotorStop (motorB);
+			sleep (500);
+		}
+
+}
+
 task main()
 {
 	int dest;
@@ -129,22 +141,76 @@ task main()
 	startp = selectStarting();
 	dest = selectDestination();
 
-	if(startp == 1) // [1,1] as starting function
+	if (startp == 1) // [1,1] as starting function
 	{
+		currx = 1;
+		curry = 1;
+	}
 
+	if (startp == 2) // [5,5] as starting function
+	{
+		currx = 5;
+		curry = 5;
+	}
 
-	if(startp == 2) // [5,5] as starting function
+	if (startp == 3) // [6,6] as starting function
+	{
+		currx = 6;
+		curry = 6;
+	}
 
-	if(startp == 3) // [6,6] as starting function
-
-	if(startp == 4) // [1,6] as starting function
+	if (startp == 4) // [1,6] as starting function
+	{
+		currx = 1;
+		curry = 6;
+	}
 
 	if(dest == 1) // [1,1] as starting function
-
+	{
+		destx = 1;
+		desty = 1;
+	}
 	if(dest == 2) // [5,5] as starting function
+		{
+		currx = 5;
+		curry = 5;
+	}
 
-	if(dest == 3) // [7,1] as starting function
+	if (dest == 3) // [7,1] as starting function
+	{
+		destx = 7;
+		desty = 1;
+	}
 
-	if(dest == 4) // [1,6] as starting function
+	if (dest == 4) // [1,6] as starting function
+	{
+		currx = 1;
+		curry = 6;
+	}
+
+	yoffset = abs(desty - curry);
+	xoffset = abs(destx - currx);
+
+	if (curry > desty)
+	{
+		turnleft();
+		drive (yoffset);
+	}
+	else
+	{
+		turnright();
+		drive (yoffset);
+	}
+
+	if (currx > destx)
+	{
+		turnleft();
+		drive (xoffset);
+	}
+	else
+	{
+		turnright();
+		drive (xoffset);
+	}
 
 } //end main()
