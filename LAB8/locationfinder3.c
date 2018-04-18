@@ -13,7 +13,7 @@ void turnright() //turnright program
 	wait1Msec (2000);
 	motor (motorB) = 10;
 	motor (motorC) = -10;
-	waitUntil(abs(getGyroDegrees(gyroSensor))> 86);
+	waitUntil(abs(getGyroDegrees(gyroSensor))> 90);
 
 	motor (motorB) = 0;
 	motor (motorC) = 0;
@@ -21,14 +21,14 @@ void turnright() //turnright program
 
 }
 
-void turnleft() //turnright program
+void turnleft() //turnleft program
 {
 	wait1Msec (1000);
 	resetGyro (gyroSensor);
 	wait1Msec (2000);
 	motor (motorB) = -10;
 	motor (motorC) = 10;
-	waitUntil(abs(getGyroDegrees(gyroSensor))> 86);
+	waitUntil(abs(getGyroDegrees(gyroSensor))> 90);
 
 	motor (motorB) = 0;
 	motor (motorC) = 0;
@@ -78,7 +78,7 @@ task main()
 	//wait for 5 seconds and beep
 	waitUntilMotorStop (motorB);
 	waitUntilMotorStop (motorC);
-	//insert annoying sound here
+	playSound(soundBeepBeep);
 	sleep (500);
 
 	//turn 180
