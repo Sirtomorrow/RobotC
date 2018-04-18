@@ -16,25 +16,25 @@ int selectStarting () //select the destination of the user
 		if (getButtonPress(buttonUp))
 		{
 			val = 1;
-			displayCenteredBigTextLine(2, "Dest is 1, 1");
+			displayCenteredBigTextLine(2, "Start is 1, 1");
 		}
 
 		if (getButtonPress(buttonDown))
 		{
 			val = 2;
-			displayCenteredBigTextLine(2, "Dest is 5, 5");
+			displayCenteredBigTextLine(2, "Start is 5, 5");
 		}
 
 		if (getButtonPress(buttonLeft))
 		{
 			val = 3;
-			displayCenteredBigTextLine(2, "Dest is 6, 6");
+			displayCenteredBigTextLine(2, "Start is 6, 6");
 		}
 
 		if (getButtonPress(buttonRight))
 		{
 			val = 4;
-			displayCenteredBigTextLine(2, "Dest is 1, 6");
+			displayCenteredBigTextLine(2, "Start is 1, 6");
 		}
 
 		wait1Msec(300);
@@ -204,12 +204,12 @@ task main()
 
 	if (currx > destx)
 	{
-		turnleft();
+		turnright();
 		drive (xoffset);
 	}
 	else
 	{
-		turnright();
+		turnleft();
 		drive (xoffset);
 	}
 
