@@ -49,6 +49,10 @@ int selectDestination () //select the destination of the user
 {
 	int val = 1;
 	displayCenteredBigTextLine(2, "Select dest");
+	displayCenteredBigTextLine(4, "Dest is 1, 1");
+	displayCenteredBigTextLine(6, "Dest is 5, 5");
+	displayCenteredBigTextLine(8, "Dest is 7, 1");
+	displayCenteredBigTextLine(10, "Dest is 1, 6");
 
 	while (getButtonPress(buttonEnter) == 0) //while enter is not pressed
 	{
