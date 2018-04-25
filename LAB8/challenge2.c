@@ -6,12 +6,12 @@
 #pragma config(Motor,  motorB,          leftMotor,     tmotorEV3_Large, PIDControl, driveLeft, encoder)
 #pragma config(Motor,  motorC,          rightMotor,    tmotorEV3_Large, PIDControl, driveRight, encoder)
 
-int selectStarting () //select the destination of the user
+int selectStarting () //select the starting point of the user
 {
 	int val = 1;
 	displayCenteredBigTextLine(2, "Select start");
 
-	while (getButtonPress(buttonEnter) == 0)
+	while (getButtonPress(buttonEnter) == 0) //while enter is not pressed
 	{
 		if (getButtonPress(buttonUp))
 		{
@@ -50,7 +50,7 @@ int selectDestination () //select the destination of the user
 	int val = 1;
 	displayCenteredBigTextLine(2, "Select dest");
 
-	while (getButtonPress(buttonEnter) == 0)
+	while (getButtonPress(buttonEnter) == 0) //while enter is not pressed
 	{
 		if (getButtonPress(buttonUp))
 		{
@@ -84,7 +84,7 @@ int selectDestination () //select the destination of the user
 
 } //end selectDestination
 
-void turnright() //turnright program
+void turnright() //turn right
 {
 	wait1Msec (500);
 	resetGyro (gyroSensor);
@@ -99,7 +99,7 @@ void turnright() //turnright program
 
 } //end turnright()
 
-void turnleft() //turnright program
+void turnleft() //turn left
 {
 	wait1Msec (500);
 	resetGyro (gyroSensor);
@@ -115,28 +115,28 @@ void turnleft() //turnright program
 
 } //end turnleft()
 
-void drive (int squares)
+void drive (int squares) //drive forward
 {
-		for (int i=0; i<squares; i++)
+		for (int i=0; i<squares; i++) //forward by amount of squares
 		{
 			setLEDColor (ledGreenFlash);
 			setMotorSyncEncoder (leftMotor, rightMotor, 0, 320,	 10);
 			waitUntilMotorStop (motorB);
 			sleep (500);
-		}
+		} //end for()
 
-}
+} //end drive()
 
 task main()
 {
-	int dest;
+	int dest; //destination
 	int destx;
 	int desty;
-	int yoffset;
-	int xoffset;
+	int yoffset; //y distance between starting point and destination
+	int xoffset; //x distance between starting point and destination
 	int curry;
 	int currx;
-	int startp;
+	int startp; //starting point
 
 	startp = selectStarting();
 	dest = selectDestination();
@@ -188,19 +188,21 @@ task main()
 		curry = 6;
 	}
 
-	yoffset = abs(desty - curry);
-	xoffset = abs(destx - currx);
+	yoffset = abs(desty - curry); //find the y offset
+	xoffset = abs(destx - currx); //find the x offset
 
-	if (curry > desty)
+	if (curry > desty) //if the current y is more than the destination y, turn left
 	{
 		turnleft();
 		drive (yoffset);
-	}
-	else
+
+	} //end if()
+	else //if the current y is more than the destination x, turn right
 	{
 		turnright();
 		drive (yoffset);
-	}
+
+	} //end else()
 
 	if (currx > destx)
 	{
