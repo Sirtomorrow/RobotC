@@ -23,7 +23,7 @@ void turnright(int x, int y) //turnright program
 	wait1Msec (2000);
 	motor (motorB) = 10;
 	motor (motorC) = -10;
-	waitUntil(abs(getGyroDegrees(gyroSensor))> 90);
+	waitUntil(abs(getGyroDegrees(gyroSensor))> 86);
 
 	motor (motorB) = 0;
 	motor (motorC) = 0;
@@ -39,7 +39,7 @@ void turnleft(int x, int y) //turnright program
 	wait1Msec (2000);
 	motor (motorB) = -10;
 	motor (motorC) = 10;
-	waitUntil(abs(getGyroDegrees(gyroSensor))> 90);
+	waitUntil(abs(getGyroDegrees(gyroSensor))> 86);
 
 	motor (motorB) = 0;
 	motor (motorC) = 0;
