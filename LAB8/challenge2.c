@@ -10,10 +10,6 @@ int selectStarting () //select the starting point of the user
 {
 	int val = 1;
 	displayCenteredBigTextLine(2, "Select start");
-	displayCenteredBigTextLine(4, "Start is 1, 1");
-	displayCenteredBigTextLine(6, "Start is 5, 5");
-	displayCenteredBigTextLine(8, "Start is 6, 6");
-	displayCenteredBigTextLine(10, "Start is 1, 6");
 
 	while (getButtonPress(buttonEnter) == 0) //while enter is not pressed
 	{
@@ -53,12 +49,8 @@ int selectDestination () //select the destination of the user
 {
 	int val = 1;
 	displayCenteredBigTextLine(2, "Select dest");
-	displayCenteredBigTextLine(4, "Up is 1, 1");
-	displayCenteredBigTextLine(6, "Down is 5, 5");
-	displayCenteredBigTextLine(8, "Left is 7, 1");
-	displayCenteredBigTextLine(10, "Right is 1, 6");
 
-	while (getButtonPress(buttonEnter) == 0) //while enter is not pressed
+	while (SensorValue[touchSensor] == 0) //while enter is not pressed
 	{
 		if (getButtonPress(buttonUp))
 		{
