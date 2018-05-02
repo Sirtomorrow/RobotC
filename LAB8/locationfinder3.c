@@ -1,4 +1,4 @@
-#pragma config(Sensor, S1,     touchSensor,    sensorEV3_Touch)
+ #pragma config(Sensor, S1,     touchSensor,    sensorEV3_Touch)
 #pragma config(Sensor, S2,     gyroSensor,     sensorEV3_Gyro, modeEV3Gyro_RateAndAngle)
 #pragma config(Sensor, S3,     colorSensor,    sensorEV3_Color, modeEV3Color_Reflected)
 #pragma config(Sensor, S4,     sonarSensor,    sensorEV3_Ultrasonic)
@@ -13,7 +13,7 @@ void turnright() //turnright program
 	wait1Msec (2000);
 	motor (motorB) = 10;
 	motor (motorC) = -10;
-	waitUntil(abs(getGyroDegrees(gyroSensor))> 90);
+	waitUntil(abs(getGyroDegrees(gyroSensor))> 88);
 
 	motor (motorB) = 0;
 	motor (motorC) = 0;
@@ -28,7 +28,7 @@ void turnleft() //turnleft program
 	wait1Msec (2000);
 	motor (motorB) = -10;
 	motor (motorC) = 10;
-	waitUntil(abs(getGyroDegrees(gyroSensor))> 90);
+	waitUntil(abs(getGyroDegrees(gyroSensor))> 88);
 
 	motor (motorB) = 0;
 	motor (motorC) = 0;
@@ -41,6 +41,7 @@ task main()
 	int destx;
 	int desty;
 	int yoffset;
+	int xoffset;
 	int curry;
 	int currx;
 
@@ -49,11 +50,9 @@ task main()
 	currx = 3;
 	curry = 1;
 
-	//display starting point
-	displayCenteredBigTextLine (2, "X=%d, Y=%d", currx, curry);
 
 	//turns right
-	yoffset = desty - curry;
+	yoffset = abs(desty - curry);
 	turnright ();
 
 	//goes down from y ([3,1] to [3,7])
@@ -62,17 +61,11 @@ task main()
 		setLEDColor (ledGreenFlash);
 		setMotorSyncEncoder (leftMotor, rightMotor, 0, 330,	 30);
 		waitUntilMotorStop (motorB);
-		displayCenteredBigTextLine (2, "X=%d, Y=%d", currx, i+1);
 		sleep (500);
-
-		if (i == 7)
-		{
-			curry = 7;
-		}
 	}
 
 	//turns left
-	yoffset = curry - desty;
+	yoffset = abs(curry - desty);
 	turnleft ();
 
 	//wait for 5 seconds and beep
@@ -82,7 +75,7 @@ task main()
 	sleep (500);
 
 	//turn 180
-	yoffset = desty - curry;
+	yoffset = abs(desty - curry);
 	turnright ();
 	turnright ();
 
@@ -90,31 +83,28 @@ task main()
 	destx = 1;
 	desty = 1;
 
+	xoffset = abs(currx-destx);
+
 	//go forward 2 squares
-	for (int i= 0; i<=(abs(currx-destx)); i++)
+	for (int i= 0; i<=xoffset; i++)
 	{
 		setLEDColor (ledGreenFlash);
 		setMotorSyncEncoder (leftMotor, rightMotor, 0, 330,	 30);
 		waitUntilMotorStop (motorB);
-		displayCenteredBigTextLine (2, "X=%d, Y=%d", currx-i, curry);
 		sleep (500);
-
-		if (i == desty)
-		{
-			curry = desty;
-		}
 	}
 
 	//turn right
 	turnright ();
 
+	yoffset = abs(curry-desty);
+
 	//goes from y ([1,7] to [1,1])
-	for (int i=0; i<=(abs(curry-desty)); i++)
+	for (int i=0; i<=yoffset; i++)
 	{
 		setLEDColor (ledGreenFlash);
 		setMotorSyncEncoder (leftMotor, rightMotor, 0, 330,	 30);
 		waitUntilMotorStop (motorB);
-		displayCenteredBigTextLine (2, "X=%d, Y=%d", currx, curry-i);
 		sleep (500);
 	}
 }
